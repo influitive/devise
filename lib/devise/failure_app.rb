@@ -101,6 +101,7 @@ module Devise
         path = if request.get?
           attempted_path
         else
+          Rails.logger.error("**DEVISETIMEOUT** #{request.referrer}") if defined?(Rails)
           request.referrer
         end
 
